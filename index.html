@@ -3,185 +3,555 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nadhir Bin Adi Azahar</title>
+  <title>NADHIR BIN ADI AZAHAR</title>
   <meta name="description" content="Public health consultancy and digital solutions." />
   <style>
     :root {
-      --bg: #f7f8fa;
-      --card: #ffffff;
+      --bg: #f4f7f7;
+      --bg-soft: #eef4f3;
+      --card: rgba(255, 255, 255, 0.78);
       --text: #1f2937;
       --muted: #6b7280;
-      --line: #e5e7eb;
+      --line: rgba(15, 118, 110, 0.14);
       --accent: #0f766e;
-      --accent-dark: #115e59;
+      --accent-2: #134e4a;
+      --accent-soft: #dff4f0;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius: 22px;
+      --max: 1100px;
     }
+
     * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
-      background: var(--bg);
-      line-height: 1.6;
+      background:
+        radial-gradient(circle at top left, rgba(15, 118, 110, 0.08), transparent 28%),
+        radial-gradient(circle at top right, rgba(20, 83, 45, 0.06), transparent 26%),
+        linear-gradient(180deg, #f8fbfb 0%, #eff4f4 100%);
+      line-height: 1.65;
     }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
     .wrap {
-      max-width: 960px;
+      width: min(var(--max), calc(100% - 32px));
       margin: 0 auto;
-      padding: 24px;
     }
-    header {
-      background: linear-gradient(135deg, #ecfeff 0%, #f8fafc 100%);
-      border-bottom: 1px solid var(--line);
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(248, 251, 251, 0.82);
+      border-bottom: 1px solid rgba(15, 118, 110, 0.08);
     }
-    .hero {
-      padding: 56px 24px 44px;
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 0;
     }
-    h1 {
-      margin: 0 0 10px;
-      font-size: 2.2rem;
-      line-height: 1.2;
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
     }
-    h2 {
-      margin: 0 0 14px;
-      font-size: 1.35rem;
+
+    .brand strong {
+      font-size: 0.98rem;
+      letter-spacing: 0.02em;
     }
-    p { margin: 0 0 14px; }
-    .lead {
-      max-width: 720px;
-      font-size: 1.05rem;
+
+    .brand span {
+      font-size: 0.82rem;
       color: var(--muted);
     }
-    nav {
+
+    .nav {
       display: flex;
-      gap: 16px;
       flex-wrap: wrap;
-      margin-top: 20px;
+      gap: 10px;
     }
-    nav a, .button {
+
+    .nav a {
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: var(--accent-2);
+      font-size: 0.94rem;
+      border: 1px solid transparent;
+    }
+
+    .nav a:hover {
       text-decoration: none;
-      color: white;
-      background: var(--accent);
-      padding: 10px 14px;
-      border-radius: 10px;
-      display: inline-block;
-      font-size: 0.95rem;
-    }
-    nav a.secondary {
       background: white;
-      color: var(--accent-dark);
-      border: 1px solid var(--line);
+      border-color: var(--line);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
     }
-    section {
-      margin: 28px 0;
+
+    .hero {
+      padding: 64px 0 34px;
     }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 22px;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-    }
-    .grid {
+
+    .hero-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: 1.35fr 0.8fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .hero-main,
+    .hero-side,
+    .section-card,
+    .service-card,
+    .project-card,
+    .contact-card {
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+    }
+
+    .hero-main {
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-main::after {
+      content: "";
+      position: absolute;
+      inset: auto -90px -90px auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(15, 118, 110, 0.18), rgba(15, 118, 110, 0));
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-soft);
+      color: var(--accent-2);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 4vw, 4.3rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-sub {
+      margin: 18px 0 0;
+      font-size: clamp(1.08rem, 1.55vw, 1.35rem);
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .button,
+    .button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 18px;
+      border-radius: 14px;
+      font-weight: 600;
+      font-size: 0.96rem;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .button {
+      background: linear-gradient(135deg, var(--accent), #115e59);
+      color: white;
+      box-shadow: 0 8px 20px rgba(15, 118, 110, 0.18);
+    }
+
+    .button-secondary {
+      background: white;
+      color: var(--accent-2);
+      border: 1px solid var(--line);
+    }
+
+    .button:hover,
+    .button-secondary:hover {
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .hero-side {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       gap: 18px;
     }
-    ul {
+
+    .mini-title {
       margin: 0;
-      padding-left: 18px;
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
     }
-    li { margin-bottom: 8px; }
-    .muted { color: var(--muted); }
+
+    .stat {
+      padding: 18px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(239,244,243,0.8));
+      border: 1px solid var(--line);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.12rem;
+      margin-bottom: 6px;
+    }
+
+    .stat p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    section {
+      padding: 14px 0 8px;
+    }
+
+    .section-card {
+      padding: 30px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: 2rem;
+      letter-spacing: -0.03em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 540px;
+    }
+
+    .about-grid,
+    .services-grid,
+    .contact-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .about-grid {
+      grid-template-columns: 1.3fr 0.9fr;
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .service-card,
+    .contact-card,
+    .project-card {
+      padding: 24px;
+    }
+
+    .service-card h3,
+    .contact-card h3,
+    .project-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.18rem;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    ul.clean {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    ul.clean li {
+      position: relative;
+      padding-left: 20px;
+    }
+
+    ul.clean li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .mission-box {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #fcfffe, #f6fbfa);
+      border-radius: 18px;
+      padding: 20px;
+    }
+
+    .project-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(246,251,250,0.92));
+    }
+
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .contact-line {
+      margin: 0 0 12px;
+      font-size: 1rem;
+    }
+
+    .legal-note {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
+
     footer {
-      margin-top: 40px;
-      padding: 24px 0 40px;
+      padding: 26px 0 48px;
       color: var(--muted);
       font-size: 0.92rem;
     }
-    .small {
-      font-size: 0.92rem;
-      color: var(--muted);
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .about-grid,
+      .services-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 34px;
+      }
+
+      .section-card,
+      .hero-main,
+      .hero-side,
+      .service-card,
+      .project-card,
+      .contact-card {
+        padding: 22px;
+      }
     }
-    .tag {
-      display: inline-block;
-      font-size: 0.82rem;
-      color: var(--accent-dark);
-      background: #ccfbf1;
-      padding: 6px 10px;
-      border-radius: 999px;
-      margin-bottom: 12px;
+
+    @media (max-width: 640px) {
+      .wrap {
+        width: min(var(--max), calc(100% - 18px));
+      }
+
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        width: 100%;
+      }
+
+      .nav a {
+        padding: 8px 12px;
+      }
+
+      h1 {
+        font-size: 2.3rem;
+      }
+
+      .section-head h2 {
+        font-size: 1.6rem;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap hero">
-      <div class="tag">Public Health Consultancy and Digital Solutions</div>
-      <h1>Nadhir Bin Adi Azahar</h1>
-      <p class="lead">Supporting practical, scalable digital solutions for public health communication, community engagement, and research implementation.</p>
-      <nav>
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <strong>NADHIR BIN ADI AZAHAR</strong>
+        <span>Public Health Consultancy and Digital Solutions</span>
+      </div>
+      <nav class="nav">
         <a href="#about">About</a>
-        <a href="#services" class="secondary">Services</a>
-        <a href="#project" class="secondary">Ongoing Project</a>
-        <a href="#contact" class="secondary">Contact</a>
+        <a href="#services">Services</a>
+        <a href="#project">Ongoing Project</a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
-  </header>
+  </div>
 
-  <main class="wrap">
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-main">
+          <div class="eyebrow">Public Health Consultancy and Digital Solutions</div>
+          <h1>Nadhir Bin Adi Azahar</h1>
+          <p class="hero-sub">Supporting practical, scalable digital solutions for public health communication, community engagement, and research implementation.</p>
+          <div class="hero-cta">
+            <a class="button" href="#project">View Ongoing Project</a>
+            <a class="button-secondary" href="#contact">Contact</a>
+          </div>
+        </div>
+        <aside class="hero-side">
+          <div class="stat">
+            <p class="mini-title">Focus</p>
+            <strong>Digital tools for public health action</strong>
+            <p>Supporting communication workflows, community engagement, and practical implementation in real-world settings.</p>
+          </div>
+          <div class="stat">
+            <p class="mini-title">Current Work</p>
+            <strong>WhatsApp-based dengue prevention workflow</strong>
+            <p>Exploring structured digital reporting and guided household action through simple, accessible messaging tools.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
     <section id="about">
-      <div class="card">
-        <h2>About</h2>
-        <p>This website presents work focused on public health consultancy and digital solutions. The scope includes health communication tools, community engagement support, workflow design, and practical implementation support for research and public health projects.</p>
-        <p class="small">Mission: To enable practical, scalable digital solutions that strengthen community-driven public health action, with a focus on early risk detection, behavioural change, and timely intervention.</p>
+      <div class="wrap">
+        <div class="section-card">
+          <div class="section-head">
+            <h2>About</h2>
+            <p>Applied work focused on practical digital systems that support prevention, communication, and implementation in public health.</p>
+          </div>
+          <div class="about-grid">
+            <div>
+              <p>This website presents work focused on public health consultancy and digital solutions. The scope includes health communication tools, community engagement support, workflow design, and practical implementation support for research and public health projects.</p>
+              <p>Current work emphasizes simple, usable systems that improve participation, strengthen feedback loops, and support more responsive action in community and programme settings.</p>
+            </div>
+            <div class="mission-box">
+              <h3>Mission</h3>
+              <p class="muted">To enable practical, scalable digital solutions that strengthen community-driven public health action, with a focus on early risk detection, behavioural change, and timely intervention.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="services">
-      <div class="grid">
-        <div class="card">
-          <h2>Services</h2>
-          <ul>
-            <li>Public health consultancy</li>
-            <li>Digital health solutions</li>
-            <li>Health communication support</li>
-            <li>Community engagement tools</li>
-            <li>Workflow and implementation support</li>
-            <li>Training and educational support</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h2>Focus Areas</h2>
-          <ul>
-            <li>Dengue prevention and outbreak support</li>
-            <li>Behavioural and implementation approaches</li>
-            <li>Digital messaging workflows</li>
-            <li>Photo-based reporting and operational tracking</li>
-          </ul>
+      <div class="wrap">
+        <div class="section-card">
+          <div class="section-head">
+            <h2>Services</h2>
+            <p>Broad, non-clinical services aligned with public health, digital workflows, and implementation support.</p>
+          </div>
+          <div class="services-grid">
+            <div class="service-card">
+              <h3>Public Health Consultancy</h3>
+              <ul class="clean">
+                <li>Programme and implementation support</li>
+                <li>Applied public health planning</li>
+                <li>Community-facing intervention design</li>
+              </ul>
+            </div>
+            <div class="service-card">
+              <h3>Digital Solutions</h3>
+              <ul class="clean">
+                <li>Health communication workflows</li>
+                <li>Digital reporting support</li>
+                <li>Structured messaging and tool design</li>
+              </ul>
+            </div>
+            <div class="service-card">
+              <h3>Training and Support</h3>
+              <ul class="clean">
+                <li>Educational support materials</li>
+                <li>Workflow guidance and documentation</li>
+                <li>Operational support for implementation</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="project">
-      <div class="card">
-        <h2>Ongoing Project</h2>
-        <p>A feasibility project is being conducted to assess the use of a WhatsApp-based automated chatbot to support community-driven dengue prevention. The project focuses on enabling residents to identify and eliminate potential mosquito breeding sites within their homes through guided instructions and photo-based reporting.</p>
-        <p>Participants receive step-by-step guidance via WhatsApp, including short educational content and prompts to inspect key areas of their homes. Residents are then encouraged to submit photos of potential breeding sites, which are reviewed using a standardised assessment approach. This allows for rapid identification of risk and supports timely feedback and action.</p>
-        <p>The project aims to evaluate the practicality, user acceptability, and operational performance of this digital approach in a real-world urban setting. Key outcomes include participation rates, completeness of submissions, response timeliness, and the feasibility of integrating such tools into routine public health practice.</p>
+      <div class="wrap">
+        <div class="project-card">
+          <div class="section-head">
+            <h2>Ongoing Project</h2>
+            <p>Current applied work focused on digital community engagement for dengue prevention.</p>
+          </div>
+          <p>A feasibility project is being conducted to assess the use of a WhatsApp-based automated chatbot to support community-driven dengue prevention. The project focuses on enabling residents to identify and eliminate potential mosquito breeding sites within their homes through guided instructions and photo-based reporting.</p>
+          <p>Participants receive step-by-step guidance via WhatsApp, including short educational content and prompts to inspect key areas of their homes. Residents are then encouraged to submit photos of potential breeding sites, which are reviewed using a standardised assessment approach. This allows for rapid identification of risk and supports timely feedback and action.</p>
+          <p>The project aims to evaluate the practicality, user acceptability, and operational performance of this digital approach in a real-world urban setting. Key outcomes include participation rates, completeness of submissions, response timeliness, and the feasibility of integrating such tools into routine public health practice.</p>
+        </div>
       </div>
     </section>
 
     <section id="contact">
-      <div class="card">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:nadhir.adiazahar@gmail.com">nadhir.adiazahar@gmail.com</a></p>
-        <p>Phone: <a href="tel:+60173457533">+60 17-345 7533</a></p>
-        <p class="small">Legal business name: Nadhir Bin Adi Azahar</p>
+      <div class="wrap">
+        <div class="contact-card">
+          <div class="section-head">
+            <h2>Contact</h2>
+            <p>For enquiries related to consultancy, digital solutions, or ongoing work.</p>
+          </div>
+          <div class="contact-grid">
+            <div>
+              <p class="contact-line"><strong>Email:</strong> <a href="mailto:nadhir.adiazahar@gmail.com">nadhir.adiazahar@gmail.com</a></p>
+              <p class="contact-line"><strong>Phone:</strong> <a href="tel:+60173457533">+60 17-345 7533</a></p>
+            </div>
+            <div>
+              <p class="contact-line"><strong>Location:</strong> Subang Jaya, Selangor, Malaysia</p>
+            </div>
+          </div>
+          <div class="legal-note">Legal business name: <strong>NADHIR BIN ADI AZAHAR</strong></div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="wrap">
-    <div>© 2026 Nadhir Bin Adi Azahar. All rights reserved.</div>
+  <footer>
+    <div class="wrap">© 2026 NADHIR BIN ADI AZAHAR. All rights reserved.</div>
   </footer>
 </body>
 </html>
